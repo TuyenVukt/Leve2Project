@@ -28,7 +28,7 @@ public class MyConnection {
     // hàm để kết nối database
     public Connection connectDB() throws ClassNotFoundException, SQLException {
         // nếu connect rồi thì trả về luôn kết quả
-        if(connection == null) {
+        if (connection == null) {
             driverTest();
             try {
                 //cú pháp kết nối datanase
@@ -44,7 +44,7 @@ public class MyConnection {
     //hàm dùng để lấy ra prepareStatment để thực hiện các câu lệnh query
     public PreparedStatement prepare(String sql) {
         try {
-            System.out.println(">> "+sql);
+            System.out.println(">> " + sql);
             //connection.prepareStatment trả về đối tượng PrepareStatment dùng để thực hiện query String sql
             return connection.prepareStatement(sql,
                     ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -59,7 +59,7 @@ public class MyConnection {
     //dùng để lấy ra prepare cho các thao tác thêm sửa xóa query Update
     public PreparedStatement prepareUpdate(String sql) {
         try {
-            System.out.println(">> "+sql);
+            System.out.println(">> " + sql);
             return connection.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
             //Statement.RETURN_GENERATED_KEYS trả về id của bản ghi vừa insert thành công
@@ -71,7 +71,7 @@ public class MyConnection {
 
     // đóng kết nối database
     public void closeConnection() throws SQLException {
-        if(connection != null) {
+        if (connection != null) {
             connection.close();
             System.out.println("Connection is closed");
         }

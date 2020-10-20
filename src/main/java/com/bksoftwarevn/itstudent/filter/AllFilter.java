@@ -14,7 +14,7 @@ public class AllFilter implements Filter {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         HttpServletResponse response = (HttpServletResponse) resp;
-        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         chain.doFilter(req, response);
     }
 

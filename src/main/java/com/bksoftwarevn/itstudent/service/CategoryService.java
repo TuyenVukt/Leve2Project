@@ -11,10 +11,15 @@ public interface CategoryService {
 
     Category findById(int id) throws SQLException;
 
+    List<Category> findByName(String name) throws SQLException;
+
     Category insert(String name) throws SQLException;
 
     boolean update(Category category) throws SQLException;
 
     boolean delete(int id) throws SQLException;
+
+    List<Category> sortByName(boolean check) throws SQLException;
+
 
 }

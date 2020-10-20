@@ -40,11 +40,11 @@ public class CategoryDaoImpl implements CategoryDao {
         PreparedStatement preparedStatement = myConnection.prepare(sql); // lấy ra prepare dùng cho câu lệnh query
         ResultSet resultSet = preparedStatement.executeQuery(); // thực thi câu lệnh query và lấy resultSet trả về
         //resetSet.first() để đưa con trỏ resetSet về bản ghi đầu tiên lấy được nếu tồn tại trả về true, còn không thì false
-        if(resultSet.first()) {
+        if (resultSet.first()) {
             do {
                 Category category = getObject(resultSet);
-                if(category != null) categoryList.add(category);
-            } while(resultSet.next()); //.next() đưa con trỏ resultSet đến dòng kết tiếu nếu tồn tại trả về true, còn không thì false
+                if (category != null) categoryList.add(category);
+            } while (resultSet.next()); //.next() đưa con trỏ resultSet đến dòng kết tiếu nếu tồn tại trả về true, còn không thì false
         }
         return categoryList;
     }
@@ -55,11 +55,48 @@ public class CategoryDaoImpl implements CategoryDao {
         String sql = "select * from category where deleted = false and id = ?";
         PreparedStatement preparedStatement = myConnection.prepare(sql);
         preparedStatement.setInt(1, id); // dùng để set giá trị vào index chấm hỏi tương ứng từ 1
-        ResultSet resultSet =  preparedStatement.executeQuery();
-        if(resultSet.first()) {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.first()) {
             category = getObject(resultSet);
         }
         return category;
+    }
+
+
+    public List<Category> findByName(String name) throws SQLException {
+        List<Category> categoryList = new ArrayList<>();
+        String sql = "select * from category where deleted = false and category.name like ?";
+        PreparedStatement preparedStatement = myConnection.prepare(sql);
+        preparedStatement.setString(1, name + '%'); // dùng để set giá trị vào index chấm hỏi tương ứng từ 1
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.first()) {
+            do {
+                Category category = getObject(resultSet);
+                if (category != null) categoryList.add(category);
+            } while (resultSet.next());
+        }
+        return categoryList;
+    }
+
+    @Override
+    public List<Category> sortByName(boolean check) throws SQLException {
+        List<Category> categoryList = new ArrayList<>();
+        String sql;
+        if (check) {//tang dan theo ten
+            sql = "select * from category where deleted = false order by name";
+        } else {
+            sql = "select * from category where deleted = false order by name DESC";
+        }
+        PreparedStatement preparedStatement = myConnection.prepare(sql);
+        ResultSet resultSet = preparedStatement.executeQuery(); // thực thi câu lệnh query và lấy resultSet trả về
+        //resetSet.first() để đưa con trỏ resetSet về bản ghi đầu tiên lấy được nếu tồn tại trả về true, còn không thì false
+        if (resultSet.first()) {
+            do {
+                Category category = getObject(resultSet);
+                if (category != null) categoryList.add(category);
+            } while (resultSet.next()); //.next() đưa con trỏ resultSet đến dòng kết tiếu nếu tồn tại trả về true, còn không thì false
+        }
+        return categoryList;
     }
 
     @Override
@@ -70,9 +107,9 @@ public class CategoryDaoImpl implements CategoryDao {
         preparedStatement.setString(1, category.getName());
         preparedStatement.setBoolean(2, category.isDeleted());
         int rs = preparedStatement.executeUpdate();
-        if(rs > 0) { //nếu insert thành công thì thực hiện lấy id vừa insert
+        if (rs > 0) { //nếu insert thành công thì thực hiện lấy id vừa insert
             ResultSet resultSet = preparedStatement.getGeneratedKeys(); // hàm dùng để lấy id cho bản ghi vừa insert
-            if(resultSet.first()) { // nếu có
+            if (resultSet.first()) { // nếu có
                 newCategory = findById((int) resultSet.getLong(1)); // lấy id bằng cách resultSet.getLong(1) kiểu trả về cột 1 của reusltSet là long,
                 // sau đó dùng hàm findById((int) key) vì key kiểu long nên ép kiểu về int để tìm lại bản ghi vừa insert;
             }
@@ -88,7 +125,7 @@ public class CategoryDaoImpl implements CategoryDao {
         preparedStatement.setString(1, category.getName());
         preparedStatement.setInt(2, category.getId());
         int rs = preparedStatement.executeUpdate();
-        if(rs > 0) result = true;
+        if (rs > 0) result = true;
         return result;
     }
 
@@ -99,7 +136,7 @@ public class CategoryDaoImpl implements CategoryDao {
         PreparedStatement preparedStatement = myConnection.prepareUpdate(sql);
         preparedStatement.setInt(1, id);
         int rs = preparedStatement.executeUpdate();
-        if(rs > 0) result = true;
+        if (rs > 0) result = true;
         return result;
     }
 }

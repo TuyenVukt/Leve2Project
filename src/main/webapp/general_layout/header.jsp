@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="https://scontent.fhan5-4.fna.fbcdn.net/v/t1.0-9/p960x960/57540167_1369260163198947_1293280215501373440_o.png?_nc_cat=104&_nc_sid=85a577&_nc_ohc=hoISz0aIRjEAX_HVD6o&_nc_ht=scontent.fhan5-4.fna&oh=4a22ba494706d4575c5d100732a5239f&oe=5F592325" alt="" width="40px" height="40px">
+        <img src="http://2.bp.blogspot.com/-7JgsjOiOf00/UzfvIZn6qiI/AAAAAAAAA5Q/-C3Bp8YwLyE/s1600/co-do-sao-vang-la-co-phuc-kien-trung-quoc_GVEhacker_1.jpg"
+             alt="" width="40px" height="40px">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,6 +18,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="quan-ly-danh-muc.tiles">Quản lý danh mục sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dang-nhap.tiles" id="login-name">Đăng nhập</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Đăng xuất</a>
             </li>
         </ul>
     </div>

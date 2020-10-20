@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="resources/js/pages/ajax_page_dang_nhap.js"></script>
 <link rel="stylesheet" href="resources/css/login.css">
 <div class="main-content page-login">
     <div class="container">
@@ -31,7 +32,8 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                                    <input type="password" class="form-control" id="password"
+                                           placeholder="Nhập mật khẩu">
                                     <div class="invalid-feedback">
                                         Error!
                                     </div>

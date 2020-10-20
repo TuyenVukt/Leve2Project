@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    Product insert(Product product)  throws Exception;
+    Product insert(Product product) throws Exception;
 
     boolean update(Product product) throws Exception;
 
@@ -17,9 +17,9 @@ public interface ProductService {
 
     Product findById(int id) throws Exception;
 
-    List<Product> search(String name, String startDate, String endDate, Boolean soldOut, int guarantee, int category, int bouth, int promotion) throws Exception;
+    List<Product> search(String name, String startDate, String endDate, Boolean soldOut, int guarantee, int category, int bought, int promotion, double price) throws Exception;
 
-    List<Product> sortBy(String field, boolean isAsc) throws SQLException;
+    List<Product> sortBy(String field, boolean isAsc, String category) throws SQLException;
 
     List<Product> findByCategory(int idCategory) throws Exception;
 

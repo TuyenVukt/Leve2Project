@@ -5,11 +5,15 @@
   Time: 8:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="resources/js/model/ajax_model_category.js"></script>
+<script src="resources/js/model/ajax_model_product.js"></script>
 <script src="resources/js/pages/ajax_page_quan_ly_san_pham.js"></script>
 <main>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -19,7 +23,7 @@
                     </button>
                 </div>
                 <div class="modal-body form-custom">
-                    <div class="row">
+                    <form class="row" enctype="multipart/form-data">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tên</label>
@@ -41,7 +45,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Giá</label>
-                                <input type="number" class="form-control" id="number-gia"placeholder="Nhập giá" min="0">
+                                <input type="number" class="form-control" id="number-gia" placeholder="Nhập giá"
+                                       min="0">
                                 <div class="invalid-feedback">
                                     Error!
                                 </div>
@@ -50,7 +55,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Đã bán</label>
-                                <input type="number" class="form-control" id="number-da-ban"placeholder="Nhập số lượng" min="0">
+                                <input type="number" class="form-control" id="number-da-ban" placeholder="Nhập số lượng"
+                                       min="0">
                                 <div class="invalid-feedback">
                                     Error!
                                 </div>
@@ -59,7 +65,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Bảo hành</label>
-                                <input type="number" class="form-control" id="number-bao-hanh"placeholder="Nhập thời lượng" min="0">
+                                <input type="number" class="form-control" id="number-bao-hanh"
+                                       placeholder="Nhập thời lượng" min="0">
                                 <div class="invalid-feedback">
                                     Error!
                                 </div>
@@ -68,19 +75,17 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Khuyến mãi</label>
-                                <input type="number" class="form-control" id="number-khuyen-mai"placeholder="Nhập khuyến mãi" min="0">
+                                <input type="number" class="form-control" id="number-khuyen-mai"
+                                       placeholder="Nhập khuyến mãi" min="0">
                                 <div class="invalid-feedback">
                                     Error!
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 text-center">
                             <div class="form-group">
-                                <label>Ảnh</label>
-                                <input type="file" class="form-control-file" id="file-anh">
-                                <div class="invalid-feedback">
-                                    Error!
-                                </div>
+                                <lable>Ảnh</lable>
+                                <input type="file" name="file" multiple="multiple" id="file-anh"/><br/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -121,7 +126,7 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -130,7 +135,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -170,21 +176,29 @@
     <div class="tool-page">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btn-them"><i class="fas fa-plus"></i> Thêm sản phẩm</button>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" id="btn-them"
+                    ><i class="fas fa-plus"></i> Thêm sản phẩm
+                    </button>
                 </div>
+
                 <div class="col-md-2 mt-1">
+                    <label>Danh mục</label>
                     <select class="form-control" id="select-search-danh-muc">
                         <option>Loại sản phẩm</option>
-                        <option value="2">Bút</option>
-                        <option value="3">Dây điện</option>
+                        <option value="2">Điện Thoại</option>
+                        <option value="3">Máy Tính</option>
                     </select>
                 </div>
+
                 <div class="col-md-2 mt-1">
+                    <label>Sắp xếp</label>
+
                     <select class="form-control" id="select-search-sap-xep">
-                        <option>Sắp xếp</option>
-                        <option>A->Z</option>
-                        <option>Z->A</option>
+                        <option value="1">Giá: Cao->Thấp</option>
+                        <option value="2">Giá: Thấp->Cao</option>
+                        <option value="3">Bán chạy</option>
+                        <option value="4">Mới nhất</option>
                     </select>
                 </div>
             </div>
@@ -211,56 +225,68 @@
                                 <th scope="row"></th>
                                 <td></td>
                                 <td><input type="text" class="form-control" id="text-search-ten"></td>
-                                <td><input type="number" class="form-control" id="number-search-gia" min="0"></td>
-                                <td><input type="number" class="form-control" id="number-search-da-ban" min="0"></td>
+                                <td><input type="number" class="form-control" id="number-search-gia" min="0"
+                                           placeholder="Tối thiểu"></td>
+                                <td><input type="number" class="form-control" id="number-search-da-ban" min="0"
+                                           placeholder="Tối thiểu"></td>
                                 <td>
-                                    <input type="date" class="form-control" id="date-search-ngay-tao">
+                                    <input type="date" class="form-control" id="date-search-ngay-tao" disabled>
                                 </td>
                                 <td>
-                                    <select id="select-search-het-hang" class="form-control" id="select-search-con-hang">
-                                        <option selected>Tất cả</option>
+                                    <select class="form-control" id="select-search-con-hang">
+                                        <option value="null">Tất cả</option>
                                         <option value="false">Còn hàng</option>
                                         <option value="true">Hết hàng</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" id="btn-tim-kiem"><i class="fas fa-search"></i> Tìm kiếm</button>
+                                    <button type="button" class="btn btn-primary" id="btn-tim-kiem"><i
+                                            class="fas fa-search"></i> Tìm kiếm
+                                    </button>
                                 </td>
                             </tr>
                             </thead>
                             <tbody id="table-data">
                             <tr>
                                 <th scope="row">1</th>
-                                <td><img src="https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/300x/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone11-purple-select-2019.png"
-                                         alt="" width="80px"></td>
+                                <td><img
+                                        src="https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/300x/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone11-purple-select-2019.png"
+                                        alt="" width="80px"></td>
                                 <td>Otto</td>
                                 <td>Otto</td>
                                 <td>Otto</td>
                                 <td>Otto</td>
                                 <td class="text-center"><span class="badge badge-success">Còn hàng</span></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-pen"></i>
-                                        Sửa</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"
+                                            data-target="#exampleModal"><i class="fas fa-pen"></i>
+                                        Sửa
+                                    </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal1"><i class="fas fa-trash-alt"></i>
-                                        Xóa</button>
+                                        Xóa
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
-                                <td><img src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-600x600.jpg"
-                                         alt="" width="80px"></td>
+                                <td><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-600x600.jpg"
+                                        alt="" width="80px"></td>
                                 <td>Thornton</td>
                                 <td>Thornton</td>
                                 <td>Thornton</td>
                                 <td>Thornton</td>
                                 <td class="text-center"><span class="badge badge-danger">Hết hàng</span></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-pen"></i>
-                                        Sửa</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"
+                                            data-target="#exampleModal"><i class="fas fa-pen"></i>
+                                        Sửa
+                                    </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal1"><i class="fas fa-trash-alt"></i>
-                                        Xóa</button>
+                                        Xóa
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>

@@ -9,10 +9,10 @@ public interface ProductDao extends BaseDao<Product> {
 
     List<Product> sortByCreateDate() throws SQLException;
 
-    List<Product> sortBy(String field, boolean isAsc) throws SQLException;
+    List<Product> sortBy(String field, boolean isAsc, String category) throws SQLException;
 
     List<Product> findByCategory(int idCategory) throws Exception;
 
-    List<Product> search(String name, String startDate, String endDate, Boolean soldOut, int guarantee, int category, int bouth, int promotion) throws Exception;
+    List<Product> search(String name, String startDate, String endDate, Boolean soldOut, int guarantee, int category, int bought, int promotion, double price) throws Exception;
 
 }

@@ -19,6 +19,7 @@ public class ApiFilter implements Filter {
         try {
             myConnection.connectDB();
         } catch (Exception e) {
+            resp.getWriter().write("<h1>Không thể kết nối cơ sở dữ liệu!!!</h1>");
             e.printStackTrace();
         }
         chain.doFilter(req, resp);

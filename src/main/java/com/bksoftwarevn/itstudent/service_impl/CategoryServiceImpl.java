@@ -26,6 +26,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public List<Category> findByName(String name) throws SQLException {
+        return categoryDao.findByName(name);
+    }
+
+    @Override
     public Category insert(String name) throws SQLException {
         Category newCategory = new Category();
         newCategory.setName(name);
@@ -41,5 +46,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public boolean delete(int id) throws SQLException {
         return id > 0 ? categoryDao.delete(id) : false;
+    }
+
+    @Override
+    public List<Category> sortByName(boolean check) throws SQLException {
+        return categoryDao.sortByName(check);
     }
 }

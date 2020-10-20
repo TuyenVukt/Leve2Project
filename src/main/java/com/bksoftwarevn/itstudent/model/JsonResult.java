@@ -2,11 +2,11 @@ package com.bksoftwarevn.itstudent.model;
 
 import com.google.gson.Gson;
 
-public class JsonResult {
+public class JsonResult {//đối tượng JsonResult để làm gì???
 
-    private String message;
+    private String message;//lời nhắn
 
-    private Object data;
+    private Object data;//dữ liệu
 
     public JsonResult() {
     }
@@ -40,11 +40,13 @@ public class JsonResult {
                 '}';
     }
 
+    // truyền vào một đối tượng(cụ thể à một String data), trả về một chuỗi json đưa ra thông báo là có thành công hay không
+    //dùng để xác nhận thành công hay thất bại của một hoạt động nào đó
     public String jsonSuccess(Object data) {
-        return new Gson().toJson(new JsonResult("success",data));
+        return new Gson().toJson(new JsonResult("success", data));
     }
 
     public String jsonFail(Object data) {
-        return new Gson().toJson(new JsonResult("fail",data));
+        return new Gson().toJson(new JsonResult("fail", data));
     }
 }
